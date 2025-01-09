@@ -1,45 +1,46 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import getAllProductsAction from './API/GetData.js';
+import {getAllProductsAction, getAllProductsFilterAction} from './API/GetData.js';
 
 export default function ProductsHook() {
     
      // get all Products
     const dispatch=useDispatch();
+    const [value,setValue]=useState();
     const run=async()=>{
-        await dispatch(getAllProductsAction());
+        if(localStorage.getItem("filter")){
+            let name=localStorage.getItem("filter");
+            setValue(name)
+            await dispatch(getAllProductsFilterAction(parseInt(name)));
+
+        }else{
+            await dispatch(getAllProductsAction());
+
+        }
     }      
 
-    const [cate, setCate] = useState(localStorage.getItem("filter")||"");
-
-    useEffect(() => {
-        run();
-        console.log(cate,"cateeee"); 
-    },[cate]);
 
 
     useEffect(()=>{
-        if(!localStorage.getItem("filter")){
-            run();
-        }
-    },[localStorage.getItem("filter")]);
+        run();
+},[]);
 
+    useEffect(()=>{
+            run();
+    },[value]);
     const AllProducts=useSelector(state=> state.products);
+    const AllProductsFilter=useSelector(state=> state.filterProducts);
     let products=[];
     try {
-        /* if(AllProducts){ */
-            products=[...AllProducts.data];
-            /* if(localStorage.getItem("filter")){
-                let category = localStorage.getItem("filter");
-                const element = products.filter((product)=>product.category === category);
-                products=[...element];
-            }
-            else{
-                products=[...AllProducts.data];
-            }  */ 
-/*         }
- */    } catch (error) {
+        if(localStorage.getItem("filter")){
+            products=[...AllProductsFilter.data];
+            console.log(products);
+        }else{
+            products=[...AllProducts.data]; 
+
+        }
+    } catch (error) {
         console.log(error);
     }
-    return [products];
+    return [products,run];
 }

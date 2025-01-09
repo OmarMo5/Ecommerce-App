@@ -23,7 +23,7 @@ const Cart = ({cart,setCart}) => {
             <div className="container card mb-3 my-5">
               <div className="row g-0">
                   <div className="col-lg-4 col-md-4 col-xs-3">
-                      <img src={product.image} className="img-fluid rounded-start" alt="..." />
+                      <img src={product.images[0]} className="img-fluid rounded-start" alt="..." />
                   </div>
                   <div className="col-lg-6 col-md-4 col-xs-4">
                       <div className="card-body text-center">

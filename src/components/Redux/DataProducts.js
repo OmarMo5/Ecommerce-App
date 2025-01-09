@@ -1,10 +1,10 @@
-import { GET_ALL_PRODUCTS } from "./Type"
+import { GET_ALL_CATEGORIES, GET_ALL_PRODUCTS, GET_FILTER_PRODUCTS } from "./Type"
 
 
 const initial ={
     products:[],
-    specificProduct:[],
-    productsByCategory:[]
+    cates:[],
+    filterProducts:[]
 }
 
 export const ProductsReducer=(state=initial,action)=>{
@@ -15,7 +15,21 @@ export const ProductsReducer=(state=initial,action)=>{
                 products:action.payload,
                 loading:false
             }
+        case GET_ALL_CATEGORIES:
+            return{
+                ...state,
+                cates:action.payload,
+                loading:false
+            }
+        case GET_FILTER_PRODUCTS:
+            return{
+                ...state,
+                filterProducts:action.payload,
+                loading:false
+            }
         default:
             return state;
     }
+    
+    
 }

@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import ProductsHook from './ProductsHook.js';
 import { useDispatch, useSelector } from 'react-redux';
+import CategoriesHook from './CategoriesHook.js';
 
 
 
 const Navbar = ({setData,cart}) => {
+  const [products,run] = ProductsHook();
+  const [Cates]=CategoriesHook();
   //console.log(useLocation());
   const location = useLocation();
   const navigate = useNavigate();
@@ -19,7 +22,9 @@ const Navbar = ({setData,cart}) => {
     else{
       localStorage.removeItem("filter");
     }
+    run();
   }
+
 
 
   return (
@@ -41,10 +46,16 @@ const Navbar = ({setData,cart}) => {
               <div className="nav-bar-wrapper">
                 <div className="items">Filter by</div>
                 <div onClick={()=>filterByCategory("All")} className="items">No Filter</div>
-                <div onClick={()=>filterByCategory("men's clothing")} className="items">men</div>
-                <div onClick={()=>filterByCategory('jewelery')} className="items">jewelery</div>
-                <div onClick={()=>filterByCategory('electronics')} className="items">electronics</div>
-                <div onClick={()=>filterByCategory("women's clothing")} className="items">women</div>
+
+                  {
+                    Cates&&Cates.slice(0,5).map((cate)=>{
+                      return(
+                        <div onClick={()=>filterByCategory(cate.id)} className="items" >{cate.name}</div>
+
+                      )
+                    })
+                  }
+
               </div>
             )
           } 

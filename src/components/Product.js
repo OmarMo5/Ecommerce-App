@@ -8,7 +8,7 @@ import ProductsHook from "./ProductsHook.js";
 
 const Product = ({ cart , setCart}) => {
 
-  const [products] = ProductsHook();
+  const [products,run] = ProductsHook();
   const addToCart = (id,price,title,description,image) =>{
     const obj = {
       id,price,title,description,image
@@ -43,7 +43,7 @@ const Product = ({ cart , setCart}) => {
                     
                     <Link to={`/product/${product.id}`} style={{
                       display:'flex',justifyContent:'center', alignItems:'center'}}>
-                      <img src={product.image} className="card-img-top" alt="..." 
+                      <img src={product.images[0]} className="card-img-top" alt="..." 
                            style={{width:"50%",height:"220px",marginTop:"30px",marginBottom:"10px"}}/>
                     </Link>
 
@@ -59,7 +59,7 @@ const Product = ({ cart , setCart}) => {
                         <button className="btn btn-primary mx-3">
                           {product.price} $
                         </button>
-                        <button onClick={()=>addToCart(product.id,product.price,product.title,product.description,product.image)}
+                        <button onClick={()=>addToCart(product.id,product.price,product.title,product.description,product.images[0])}
                                 className="btn btn-warning">
                           Add To Cart
                         </button>

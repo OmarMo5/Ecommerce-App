@@ -1,2 +1,4 @@
 export const GET_ALL_PRODUCTS="GET_ALL_PRODUCTS";
+export const GET_ALL_CATEGORIES="GET_ALL_CATEGORIES";
+export const GET_FILTER_PRODUCTS="GET_FILTER_PRODUCTS";
 export const Get_Error="Get_Error";

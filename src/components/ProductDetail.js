@@ -16,13 +16,13 @@ const ProductDetail = ({ cart, setCart }) => {
     setProduct(filterProduct[0]);
   }, [id, product.category]); 
 
-  const addToCart = (id, price, title, description, image) => {
+  const addToCart = (id, price, title, description, images) => {
     const obj = {
       id,
       price,
       title,
       description,
-      image,
+      images
     };
     setCart([...cart, obj]);
     //console.log("Cart element = ", cart);
@@ -54,7 +54,7 @@ const ProductDetail = ({ cart, setCart }) => {
       />
       <div className="container con"style={{margin:"12px 0px 45px 0px"}}>
         <div className="img row col-md-6 col-xs-4">
-          <img src={product.image} alt="" />
+          <img src={product.images&&product.images[0]} alt="" />
         </div>
         <div className="text-center">
           <h1 className="card-title">{product.title}</h1>
@@ -67,7 +67,7 @@ const ProductDetail = ({ cart, setCart }) => {
                 product.price,
                 product.title,
                 product.description,
-                product.image
+                product.images[0]
               )
             }
             className="btn btn-warning">

@@ -6,14 +6,13 @@ import "react-toastify/dist/ReactToastify.css";
 import ProductsHook from "./ProductsHook.js";
 
 const ProductDetail = ({ cart, setCart }) => {
-  const { id } = useParams(); //This Id To Product
+  const { id } = useParams();
   const [products] = ProductsHook();
   
   const [product, setProduct] = useState({});
 
    useEffect(() => {
     const filterProduct = products.filter((prodcut) => prodcut.id == id);
-    //  console.log(filterProduct)
     setProduct(filterProduct[0]);
   }, [id, product.category]); 
 

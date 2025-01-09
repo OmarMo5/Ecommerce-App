@@ -27,18 +27,18 @@ export default function ProductsHook() {
     const AllProducts=useSelector(state=> state.products);
     let products=[];
     try {
-        if(AllProducts){
+        /* if(AllProducts){ */
             products=[...AllProducts.data];
-            if(localStorage.getItem("filter")){
+            /* if(localStorage.getItem("filter")){
                 let category = localStorage.getItem("filter");
                 const element = products.filter((product)=>product.category === category);
                 products=[...element];
             }
             else{
                 products=[...AllProducts.data];
-            }  
-        }
-    } catch (error) {
+            }  */ 
+/*         }
+ */    } catch (error) {
         console.log(error);
     }
     return [products];

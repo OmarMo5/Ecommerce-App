@@ -13,10 +13,6 @@ const Navbar = ({setData,cart}) => {
   const [product] = ProductsHook();
   
   const filterByCategory = (category)=>{
-    //const element = product.filter((product)=>product.category === category);
-    //console.log(element);
-    //setData(element);
-    //console.log(element,"elem");
     if(category != "All"){
       localStorage.setItem("filter",category);
     }

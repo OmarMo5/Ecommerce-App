@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {BrowserRouter, Routes,Route} from 'react-router-dom';
+import {BrowserRouter, Routes,Route, HashRouter} from 'react-router-dom';
 import Navbar from './components/Navbar.js';
 import Product from './components/Product.js';
 import ProductDetail from './components/ProductDetail.js';
@@ -14,14 +14,14 @@ const App = () => {
 
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Navbar cart={cart} setData={setData} />
         <Routes>
           <Route path="/" element={<Product cart={cart} setCart={setCart} products={data} />} />
           <Route path="/product/:id" element={<ProductDetail cart={cart} setCart={setCart} />} />
           <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
       <Footer/>
     </>
   )

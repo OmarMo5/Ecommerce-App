@@ -5,15 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import CategoriesHook from './CategoriesHook.js';
 
 
-
 const Navbar = ({setData,cart}) => {
+
   const [products,run] = ProductsHook();
   const [Cates]=CategoriesHook();
   //console.log(useLocation());
   const location = useLocation();
   const navigate = useNavigate();
-
-  const [product] = ProductsHook();
   
   const filterByCategory = (category)=>{
     if(category != "All"){
@@ -33,24 +31,28 @@ const Navbar = ({setData,cart}) => {
           <div className="nav-bar">
               <Link to={'/'} className="brand">Ecommerce-App</Link>
 
+
               <Link to={'/cart'} className="cart">
                   <button type="button" className="btn btn-primary position-relative">
                     {cart.length}
-                    <span>  Cards</span>
+                    <span>  Cart</span>
                   </button>
               </Link>
           </div>
 
           {
             location.pathname == '/' && (
-              <div className="nav-bar-wrapper">
+              <div className="nav-bar-wrapper" style={{display:"flex",justifyContent:"space-around",
+                                                      flexWrap:"wrap"}}>
                 <div className="items">Filter by</div>
-                <div onClick={()=>filterByCategory("All")} className="items">No Filter</div>
+                <div onClick={()=>filterByCategory("All")} className="items" style={{marginLeft:"20px"}}>No Filter</div>
 
                   {
                     Cates&&Cates.slice(0,5).map((cate)=>{
                       return(
-                        <div onClick={()=>filterByCategory(cate.id)} className="items" >{cate.name}</div>
+                        <div style={{marginLeft:"20px"}} onClick={()=>filterByCategory(cate.id)} className="items">
+                          {cate.name}
+                        </div>
 
                       )
                     })

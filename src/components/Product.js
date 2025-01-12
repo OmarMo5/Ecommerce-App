@@ -9,9 +9,9 @@ import ProductsHook from "./ProductsHook.js";
 const Product = ({ cart , setCart}) => {
 
   const [products,run] = ProductsHook();
-  const addToCart = (id,price,title,description,image) =>{
+  const addToCart = (id,price,title,description,images) =>{
     const obj = {
-      id,price,title,description,image
+      id,price,title,description,images
     };
     setCart([...cart, obj]);
     toast("Item Added To Card");

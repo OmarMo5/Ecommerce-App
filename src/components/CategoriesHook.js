@@ -10,17 +10,14 @@ export default function CategoriesHook() {
             await dispatch(getCategoriesAction());   
     }      
 
-
-
     useEffect(()=>{
         run();
-},[]);
+    },[]);
 
 
     const AllCates=useSelector(state=> state.cates);
     let Cates=[];
     try {
-      
         Cates=[...AllCates.data]; 
     } catch (error) {
         console.log(error);

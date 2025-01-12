@@ -23,14 +23,11 @@ const Navbar = ({setData,cart}) => {
     run();
   }
 
-
-
   return (
     <>
       <header className='sticky-top'>
           <div className="nav-bar">
               <Link to={'/'} className="brand">Ecommerce-App</Link>
-
 
               <Link to={'/cart'} className="cart">
                   <button type="button" className="btn btn-primary position-relative">
@@ -45,7 +42,7 @@ const Navbar = ({setData,cart}) => {
               <div className="nav-bar-wrapper" style={{display:"flex",justifyContent:"space-around",
                                                       flexWrap:"wrap"}}>
                 <div className="items">Filter by</div>
-                <div onClick={()=>filterByCategory("All")} className="items" style={{marginLeft:"20px"}}>No Filter</div>
+                <div onClick={()=>filterByCategory("All")} className="items" style={{marginLeft:"20px"}}>All Product</div>
 
                   {
                     Cates&&Cates.slice(0,5).map((cate)=>{

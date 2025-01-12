@@ -67,7 +67,7 @@ const ProductDetail = ({ cart, setCart }) => {
                 product.price,
                 product.title,
                 product.description,
-                product.images[0]
+                product.images
               )
             }
             className="btn btn-warning">

@@ -15,7 +15,6 @@ export default function ProductsHook() {
 
         }else{
             await dispatch(getAllProductsAction());
-
         }
     }      
 
@@ -23,7 +22,7 @@ export default function ProductsHook() {
 
     useEffect(()=>{
         run();
-},[]);
+    },[]);
 
     useEffect(()=>{
             run();

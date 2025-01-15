@@ -23,11 +23,13 @@ const Navbar = ({setData,cart}) => {
     run();
   }
 
+
   return (
     <>
       <header className='sticky-top'>
           <div className="nav-bar">
               <Link to={'/'} className="brand">Ecommerce-App</Link>
+              <Link to={'/all'} className="brand">Show Products</Link>
 
               <Link to={'/cart'} className="cart">
                   <button type="button" className="btn btn-primary position-relative">
@@ -38,7 +40,7 @@ const Navbar = ({setData,cart}) => {
           </div>
 
           {
-            location.pathname == '/' && (
+            location.pathname == '/all' && (
               <div className="nav-bar-wrapper" style={{display:"flex",justifyContent:"space-around",
                                                       flexWrap:"wrap"}}>
                 <div className="items">Filter by</div>

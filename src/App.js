@@ -6,6 +6,7 @@ import ProductDetail from './components/ProductDetail.js';
 import Cart from './components/Cart.js';
 import Footer from './components/Footer.js';
 import ProductsHook from './components/ProductsHook.js';
+import Home from './components/HomePage/Home.js';
 
 const App = () => {
   const [products] = ProductsHook();
@@ -16,14 +17,14 @@ const App = () => {
     <>
       <HashRouter>
         <Navbar cart={cart} setData={setData} />
-        
         <Routes>
-          <Route path="/" element={<Product cart={cart} setCart={setCart} products={data} />} />
+          <Route path='/' element={<Home/>}/>
+          <Route path="/all" element={<Product cart={cart} setCart={setCart} products={data} />} />
           <Route path="/product/:id" element={<ProductDetail cart={cart} setCart={setCart} />} />
           <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
         </Routes>
       </HashRouter>
-
+      
       <Footer/>
     </>
   )

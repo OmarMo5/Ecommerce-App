@@ -53,8 +53,8 @@ const ProductDetail = ({ cart, setCart }) => {
         theme="dark"
       />
       <div className="container con"style={{margin:"12px 0px 45px 0px"}}>
-        <div className="img row col-md-6 col-xs-4">
-          <img src={product.images&&product.images[0]} alt="" />
+        <div className="img row col-lg-6 col-md-4 col-sm-4">
+          <img src={product.images&&product.images[0]} alt="" style={{marginLeft:"30%"}}/>
         </div>
         <div className="text-center">
           <h1 className="card-title">{product.title}</h1>
